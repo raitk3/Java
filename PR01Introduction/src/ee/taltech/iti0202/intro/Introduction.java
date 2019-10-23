@@ -1,0 +1,72 @@
+package ee.taltech.iti0202.intro;
+
+public class Introduction {
+
+    /**
+     * Method gets a string containing word Java in different cases.
+     * Method must be case-insensitive to recognize all the Java words.
+     *
+     * @param stringWithJava the string to find words Java from.
+     * @return The number of word Java occurrences.
+     */
+    public static int countJava(String stringWithJava) {
+        int count = 0;
+        int i = 0;
+        stringWithJava = stringWithJava.toLowerCase();
+        while (i + 3 < stringWithJava.length()) {
+            if (stringWithJava.substring(i, i + 4).equals("java")) count++;
+            i++;
+        }
+        return count;
+    }
+
+
+    /**
+     * Method gets an array of numbers and another number.
+     * The second integer's value must equal to the number of its occurrences in the given array.
+     *
+     * @param inputNumbers int array
+     * @param sneakyNumber int
+     * @return true if sneakyNumber's value equals its number of occurrences
+     */
+    public static boolean doubleNumber(int[] inputNumbers, int sneakyNumber) {
+        int count = 0;
+        for (int inputNumber : inputNumbers) {
+            if (inputNumber == sneakyNumber) count++;
+        }
+        return count == sneakyNumber;
+    }
+
+
+    /**
+     * Method gets two numbers as parameters.
+     * Method must answer if the given pair gives bad, normal or good outcome.
+     * Outcome is "ok" if both values equal at least 5.
+     * Outcome is "bad" if any of values is less than 5.
+     * Outcome is "good" if one value equals doubled second value.
+     * The priority is as follows: "bad", "good", "ok" (if several cases apply, take the higher / earlier).
+     *
+     * @param valueOne int
+     * @param valueTwo int
+     * @return true if sneakyNumber's value equals its number of occurrences
+     */
+    public static String howIsOutcome(int valueOne, int valueTwo) {
+        if (valueOne < 5 || valueTwo < 5) return "bad";
+        if (valueOne * 2 == valueTwo || valueTwo * 2 == valueOne) return "good";
+        return "ok";
+    }
+
+    public static void main(String[] args) {
+        // static method we can call directly from static method (main)
+        System.out.println(countJava("javaJavaJAVA"));  // 3
+        System.out.println(countJava("Nothing here"));  // 0
+        System.out.println(countJava("Javajjavajjavavajava"));  // 4
+        System.out.println(doubleNumber(new int[] {1, 2, 3, 4, 4, 4, 4}, 4));  // true
+        System.out.println(doubleNumber(new int[] {1, 1, 2, 1, 3}, 3));  // true
+        System.out.println(howIsOutcome(2, 4));
+        System.out.println(howIsOutcome(5, 5));
+        System.out.println(howIsOutcome(10, 5));
+        System.out.println(howIsOutcome(5, 10));
+        // try some other examples here
+    }
+}
