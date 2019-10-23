@@ -1,0 +1,6 @@
+.button {
+    -fx-background-color: lightblue;
+    -fx-border-width: 5px;
+    -fx-border-color: green;
+    -fx-border-radius: 10px;
+}
